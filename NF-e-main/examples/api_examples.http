@@ -1,0 +1,354 @@
+### API de NFe - Exemplos de Requisições
+
+### 1. Health Check
+GET http://localhost:8000/ping
+
+### 2. Criar Remetente - Pessoa Jurídica
+POST http://localhost:8000/api/remetentes
+Content-Type: application/json
+
+{
+  "nome": "Empresa XYZ Ltda",
+  "cpf_cnpj": "12345678000199",
+  "tipo_pessoa": "J",
+  "email": "contato@xyz.com",
+  "telefone": "(11) 3333-4444",
+  "endereco": {
+    "logradouro": "Av. Paulista",
+    "numero": "1000",
+    "complemento": "Sala 1001",
+    "bairro": "Bela Vista",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "cep": "01310-100",
+    "pais": "Brasil"
+  },
+  "inscricao_estadual": "123456789012",
+  "inscricao_municipal": "987654321098",
+  "regime_tributario": "3",
+  "razao_social": "Empresa XYZ Ltda",
+  "nome_fantasia": "XYZ",
+  "website": "www.xyz.com",
+  "banco": "Banco do Brasil",
+  "agencia": "1234",
+  "conta": "12345-6"
+}
+
+### 3. Listar Todos os Remetentes
+GET http://localhost:8000/api/remetentes
+
+### 4. Buscar Remetente por ID
+GET http://localhost:8000/api/remetentes/20241201120000
+
+### 5. Atualizar Remetente
+PUT http://localhost:8000/api/remetentes/20241201120000
+Content-Type: application/json
+
+{
+  "nome": "Empresa XYZ Ltda Atualizada",
+  "telefone": "(11) 4444-5555",
+  "website": "www.xyz.com.br"
+}
+
+### 6. Criar Destinatário - Pessoa Física
+POST http://localhost:8000/api/destinatarios
+Content-Type: application/json
+
+{
+  "nome": "João Silva Santos",
+  "cpf_cnpj": "12345678901",
+  "tipo_pessoa": "F",
+  "email": "joao.silva@email.com",
+  "telefone": "(11) 99999-9999",
+  "endereco": {
+    "logradouro": "Rua das Flores",
+    "numero": "123",
+    "complemento": "Apto 45",
+    "bairro": "Centro",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "cep": "01234-567",
+    "pais": "Brasil"
+  },
+  "inscricao_estadual": "123456789",
+  "inscricao_municipal": "987654321"
+}
+
+### 7. Criar Destinatário - Pessoa Jurídica
+POST http://localhost:8000/api/destinatarios
+Content-Type: application/json
+
+{
+  "nome": "Empresa ABC Ltda",
+  "cpf_cnpj": "98765432000188",
+  "tipo_pessoa": "J",
+  "email": "contato@empresaabc.com",
+  "telefone": "(11) 3333-4444",
+  "endereco": {
+    "logradouro": "Rua das Flores",
+    "numero": "500",
+    "complemento": "Sala 200",
+    "bairro": "Centro",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "cep": "01234-567",
+    "pais": "Brasil"
+  }
+}
+
+### 8. Listar Todos os Destinatários
+GET http://localhost:8000/api/destinatarios
+
+### 9. Buscar Destinatário por ID
+GET http://localhost:8000/api/destinatarios/20241201120000
+
+### 10. Atualizar Destinatário
+PUT http://localhost:8000/api/destinatarios/20241201120000
+Content-Type: application/json
+
+{
+  "nome": "João Silva Santos Atualizado",
+  "telefone": "(11) 88888-8888",
+  "endereco": {
+    "logradouro": "Rua das Flores",
+    "numero": "123",
+    "complemento": "Apto 46",
+    "bairro": "Centro",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "cep": "01234-567",
+    "pais": "Brasil"
+  }
+}
+
+### 11. Criar NFe com Produto
+POST http://localhost:8000/api/nfes
+Content-Type: application/json
+
+{
+  "numero": "001",
+  "serie": "1",
+  "data_emissao": "2024-01-15T10:00:00Z",
+  "data_saida": "2024-01-15T10:00:00Z",
+  "remetente": {
+    "nome": "Empresa XYZ Ltda",
+    "cpf_cnpj": "12345678000199",
+    "tipo_pessoa": "J",
+    "email": "contato@xyz.com",
+    "telefone": "(11) 3333-4444",
+    "endereco": {
+      "logradouro": "Av. Paulista",
+      "numero": "1000",
+      "complemento": "Sala 1001",
+      "bairro": "Bela Vista",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01310-100",
+      "pais": "Brasil"
+    },
+    "inscricao_estadual": "123456789012",
+    "inscricao_municipal": "987654321098",
+    "regime_tributario": "3",
+    "razao_social": "Empresa XYZ Ltda",
+    "nome_fantasia": "XYZ",
+    "website": "www.xyz.com",
+    "banco": "Banco do Brasil",
+    "agencia": "1234",
+    "conta": "12345-6"
+  },
+  "destinatario": {
+    "nome": "João Silva Santos",
+    "cpf_cnpj": "12345678901",
+    "tipo_pessoa": "F",
+    "email": "joao.silva@email.com",
+    "telefone": "(11) 99999-9999",
+    "endereco": {
+      "logradouro": "Rua das Flores",
+      "numero": "123",
+      "complemento": "Apto 45",
+      "bairro": "Centro",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01234-567",
+      "pais": "Brasil"
+    }
+  },
+  "itens": [
+    {
+      "codigo": "PROD001",
+      "descricao": "Notebook Dell Inspiron",
+      "quantidade": 1,
+      "unidade_medida": "UN",
+      "valor_unitario": 3500.00,
+      "aliquota_icms": 18.00,
+      "aliquota_ipi": 0.00,
+      "aliquota_pis": 1.65,
+      "aliquota_cofins": 7.60
+    }
+  ]
+}
+
+### 12. Criar NFe com Múltiplos Produtos
+POST http://localhost:8000/api/nfes
+Content-Type: application/json
+
+{
+  "numero": "002",
+  "serie": "1",
+  "data_emissao": "2024-01-15T14:30:00Z",
+  "data_saida": "2024-01-15T14:30:00Z",
+  "remetente": {
+    "nome": "Empresa XYZ Ltda",
+    "cpf_cnpj": "12345678000199",
+    "tipo_pessoa": "J",
+    "email": "contato@xyz.com",
+    "telefone": "(11) 3333-4444",
+    "endereco": {
+      "logradouro": "Av. Paulista",
+      "numero": "1000",
+      "complemento": "Sala 1001",
+      "bairro": "Bela Vista",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01310-100",
+      "pais": "Brasil"
+    },
+    "inscricao_estadual": "123456789012",
+    "inscricao_municipal": "987654321098",
+    "regime_tributario": "3",
+    "razao_social": "Empresa XYZ Ltda",
+    "nome_fantasia": "XYZ",
+    "website": "www.xyz.com",
+    "banco": "Banco do Brasil",
+    "agencia": "1234",
+    "conta": "12345-6"
+  },
+  "destinatario": {
+    "nome": "Empresa ABC Ltda",
+    "cpf_cnpj": "12345678000199",
+    "tipo_pessoa": "J",
+    "email": "contato@empresaabc.com",
+    "telefone": "(11) 3333-4444",
+    "endereco": {
+      "logradouro": "Av. Paulista",
+      "numero": "1000",
+      "complemento": "Sala 1001",
+      "bairro": "Bela Vista",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01310-100",
+      "pais": "Brasil"
+    }
+  },
+  "itens": [
+    {
+      "codigo": "PROD001",
+      "descricao": "Notebook Dell Inspiron",
+      "quantidade": 2,
+      "unidade_medida": "UN",
+      "valor_unitario": 3500.00,
+      "aliquota_icms": 18.00,
+      "aliquota_ipi": 0.00,
+      "aliquota_pis": 1.65,
+      "aliquota_cofins": 7.60
+    },
+    {
+      "codigo": "PROD002",
+      "descricao": "Mouse Wireless",
+      "quantidade": 5,
+      "unidade_medida": "UN",
+      "valor_unitario": 50.00,
+      "aliquota_icms": 18.00,
+      "aliquota_ipi": 0.00,
+      "aliquota_pis": 1.65,
+      "aliquota_cofins": 7.60
+    },
+    {
+      "codigo": "PROD003",
+      "descricao": "Teclado Mecânico",
+      "quantidade": 3,
+      "unidade_medida": "UN",
+      "valor_unitario": 200.00,
+      "aliquota_icms": 18.00,
+      "aliquota_ipi": 0.00,
+      "aliquota_pis": 1.65,
+      "aliquota_cofins": 7.60
+    }
+  ]
+}
+
+### 13. Listar Todas as NFes
+GET http://localhost:8000/api/nfes
+
+### 14. Buscar NFe por ID
+GET http://localhost:8000/api/nfes/20250717155247
+
+### 15. Autorizar NFe
+POST http://localhost:8000/api/nfes/20250717155247/autorizar
+
+### 16. Cancelar NFe
+POST http://localhost:8000/api/nfes/20250717155247/cancelar
+
+### 17. Atualizar NFe (apenas se estiver em rascunho)
+PUT http://localhost:8000/api/nfes/20250717155247
+Content-Type: application/json
+
+{
+  "numero": "001",
+  "serie": "1",
+  "data_emissao": "2024-01-15T10:00:00Z",
+  "data_saida": "2024-01-15T10:00:00Z",
+  "destinatario": {
+    "nome": "João Silva Santos",
+    "cpf_cnpj": "12345678901",
+    "tipo_pessoa": "F",
+    "email": "joao.silva@email.com",
+    "telefone": "(11) 99999-9999",
+    "endereco": {
+      "logradouro": "Rua das Flores",
+      "numero": "123",
+      "complemento": "Apto 45",
+      "bairro": "Centro",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01234-567",
+      "pais": "Brasil"
+    }
+  },
+  "itens": [
+    {
+      "codigo": "PROD001",
+      "descricao": "Notebook Dell Inspiron Atualizado",
+      "quantidade": 1,
+      "unidade_medida": "UN",
+      "valor_unitario": 3800.00,
+      "aliquota_icms": 18.00,
+      "aliquota_ipi": 0.00,
+      "aliquota_pis": 1.65,
+      "aliquota_cofins": 7.60
+    }
+  ]
+}
+
+### 18. Remover NFe (apenas se estiver em rascunho)
+DELETE http://localhost:8000/api/nfes/20250717155247
+
+### 19. Remover Destinatário
+DELETE http://localhost:8000/api/destinatarios/20250717155247
+
+### 20. Remover Remetente
+DELETE http://localhost:8000/api/remetentes/20250717155247
+
+### 21. Consultar Status SEFAZ
+GET http://localhost:8000/api/sefaz/status
+
+### 22. Gerar XML da NFe
+GET http://localhost:8000/api/sefaz/xml/20250717155247
+
+### 23. Enviar NFe para SEFAZ
+POST http://localhost:8000/api/sefaz/enviar
+Content-Type: application/json
+
+{
+  "nfe_id": "20250717155247"
+} 
